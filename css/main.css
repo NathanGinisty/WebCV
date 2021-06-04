@@ -310,9 +310,15 @@ section {
     flex-direction: column;
 }
 
-.project-title {
-    text-align: center;
-    margin-top: 5px;
+.project:hover {
+    transform: scale(1.2);
+    filter: saturate(3);
+    transition-duration: 0.3s;
+}
+
+.project:not(hover) {
+    transform: scale(1);
+    transition-duration: 0.3s;
 }
 
 .project-img {
@@ -326,6 +332,35 @@ section {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+
+.project-infobar {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: ". title links";
+}
+
+.project-title {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    grid-area: title;
+}
+
+.project-links-container {
+    text-align: right;
+    margin: auto 0;
+    grid-area: links;
+}
+
+.project-link {
+}
+
+.project-link-img {
+
+    height: 24px;
+    width: 24px;
 }
 
 /* ------------------------------------------------------------ */
