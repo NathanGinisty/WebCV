@@ -1,19 +1,4 @@
 /* ------------------------------------------------------------ */
-/* ------------------------- Projects ------------------------- */
-/* ------------------------------------------------------------ */
-
-function multiplyNode(node, count, deep) {
-    for (var i = 0, copy; i < count - 1; i++) {
-        copy = node.cloneNode(deep);
-        node.parentNode.insertBefore(copy, node);
-    }
-}
-
-multiplyNode(document.querySelector('.project-web'), 3, true);
-
-multiplyNode(document.querySelector('.project-game'), 6, true);
-
-/* ------------------------------------------------------------ */
 /* --------------- Dynamic Point Mesh Animation --------------- */
 /* ------------------------------------------------------------ */
 
@@ -134,3 +119,20 @@ let delay = 200, tid,
 rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
+
+
+/* ------------------------------------------------------------ */
+/* ------------------------- Projects ------------------------- */
+/* ------------------------------------------------------------ */
+
+function multiplyNode(node, count, deep) {
+    for (var i = 0, copy; i < count - 1; i++) {
+        copy = node.cloneNode(deep);
+        node.parentNode.insertBefore(copy, node);
+
+    }
+}
+
+multiplyNode(document.querySelector('.project-web'), 3, true);
+
+multiplyNode(document.querySelector('.project-game'), 6, true);
