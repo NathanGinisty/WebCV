@@ -7,7 +7,7 @@ let resizeReset = function () {
     h = canvasBody.height = parseInt(height);
 };
 
-const opts = {
+opts = {
     particleColor: "rgb(200,200,200)",
     lineColor: "rgb(200,200,200)",
     particleAmount: 50,
@@ -50,8 +50,8 @@ let linkPoints = function (point1, hubs) {
 };
 
 Particle = function (xPos, yPos) {
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
+    this.x = xPos != null ? xPos : Math.random() * w;
+    this.y = yPos != null ? yPos :Math.random() * h;
     this.speed = opts.defaultSpeed + Math.random() * opts.variantSpeed;
     this.directionAngle = Math.floor(Math.random() * 360);
     this.color = opts.particleColor;
@@ -86,8 +86,9 @@ Particle = function (xPos, yPos) {
     };
 };
 
+particles = [];
+
 function setup() {
-    particles = [];
     resizeReset();
     for (let i = 0; i < opts.particleAmount; i++) {
         particles.push(new Particle());
@@ -107,8 +108,6 @@ function loop() {
     }
 }
 
-
-
 const canvasBody = document.getElementById("canvas"),
 
 style = window.getComputedStyle(canvasBody),
@@ -120,6 +119,31 @@ rgb = opts.lineColor.match(/\d+/g);
 resizeReset();
 setup();
 
+/* ------------------------------------------------------------ */
+
+function AddParticleOnClick(mouseEvent)
+{
+  var xpos;
+  var ypos;
+  if (mouseEvent)
+  {
+    //FireFox
+    xpos = mouseEvent.screenX;
+    ypos = mouseEvent.screenY;
+  }
+  else
+  {
+    //IE
+    xpos = window.event.screenX;
+    ypos = window.event.screenY;
+  }
+
+  opts.particleAmount++;
+  particles.push(new Particle(xpos,ypos));
+}
+
+// document.getElementById("canvas").addEventListener("click", AddParticleOnClick);
+
 
 /* ------------------------------------------------------------ */
 /* ------------------------- Projects ------------------------- */
@@ -129,10 +153,14 @@ function multiplyNode(node, count, deep) {
     for (var i = 0, copy; i < count - 1; i++) {
         copy = node.cloneNode(deep);
         node.parentNode.insertBefore(copy, node);
-
+        
     }
 }
 
 multiplyNode(document.querySelector('.project-web'), 3, true);
 
 multiplyNode(document.querySelector('.project-game'), 6, true);
+
+
+/* ----------------------------------------------------------- */
+
