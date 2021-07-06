@@ -156,18 +156,23 @@ function multiplyNode(node, count, deep)
     }
 }
 
-// multiplyNode(document.querySelector('.project-web'), 3, true);
-// multiplyNode(document.querySelector('.project-game'), 6, true);
-
-
-function createProject(node)
-{
-    var newPj = node.cloneNode(true);
-    node.parentNode.insertBefore(newPj, node);
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-createProject(document.querySelector('.project-web'));
+function createProject(node, id, pjName, pjWebLink, insertAfterNode = null)
+{
+    var newPj = node.cloneNode(true);
+    newPj.querySelector("#pj-name-0").setAttribute("id", "pj-name-" + id);
+    newPj.querySelector("#pj-weblink-0").setAttribute("id", "pj-weblink-" + id);
+    
+    insertAfter(newPj, insertAfterNode == null ? node : insertAfterNode);
+    
+    document.getElementById("pj-name-" + id).innerHTML = pjName;
+    document.getElementById("pj-weblink-" + id).href = pjWebLink;
 
+    return newPj;
+}
 
 /* ----------------------------------------------------------- */
 
@@ -180,12 +185,21 @@ const apiData = {
 const {url, table, id} = apiData
 const apiUrl = `${url}${table}${id}`
 
-fetch(apiUrl)
-.then((data)=> console.log(data.json()))
 
 function GetData()
 {
+    fetch(apiUrl)
+    .then(data => data.json())
+    .then(data => {
+        var lastNode = null;
 
-}
-
-GetData();
+        data.ProjectsWeb.forEach(element =>
+            {
+                lastNode = createProject(document.querySelector('.project-web'), element.id, element.name, element.gitlink, lastNode);
+            });  
+            document.querySelector('.project-web').remove(); // remove the base since it became useless
+        })
+    }
+    
+    GetData();
+    
