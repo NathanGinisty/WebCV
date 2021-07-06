@@ -9,7 +9,7 @@ var app = express();
 var fs = require('fs'); //require file system object
 var cors = require('cors')
 
-app.use(cors())
+app.use(cors());
 
 // Create a server to listen at port 3000 
 var server = app.listen(3000, function(){

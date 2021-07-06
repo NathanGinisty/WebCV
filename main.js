@@ -4,13 +4,14 @@
 
 let resizeReset = function () {
     w = canvasBody.width = window.innerWidth;
-    h = canvasBody.height = parseInt(height);
+    h = canvasBody.height = document.getElementById("resume").offsetHeight;
+    // h = canvasBody.height = parseInt(height);
 };
 
 opts = {
     particleColor: "rgb(200,200,200)",
     lineColor: "rgb(200,200,200)",
-    particleAmount: 50,
+    particleAmount: 30,
     defaultSpeed: 0.6,
     variantSpeed: 1,
     defaultRadius: 2,
@@ -160,17 +161,56 @@ function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function createProject(node, id, pjName, pjWebLink, insertAfterNode = null)
+function createProjectWeb(node, element, insertAfterNode = null)
 {
     var newPj = node.cloneNode(true);
-    newPj.querySelector("#pj-name-0").setAttribute("id", "pj-name-" + id);
-    newPj.querySelector("#pj-weblink-0").setAttribute("id", "pj-weblink-" + id);
+    var id = element.id;
+    
+    newPj.querySelector("#pjw-name-0").setAttribute("id", "pjw-name-" + id);
+    newPj.querySelector("#pjw-web-0").setAttribute("id", "pjw-web-" + id);
+    newPj.querySelector("#pjw-git-0").setAttribute("id", "pjw-git-" + id);
+    newPj.querySelector("#pjw-img-0").setAttribute("id", "pjw-img-" + id);
     
     insertAfter(newPj, insertAfterNode == null ? node : insertAfterNode);
     
-    document.getElementById("pj-name-" + id).innerHTML = pjName;
-    document.getElementById("pj-weblink-" + id).href = pjWebLink;
+    document.getElementById("pjw-name-" + id).innerHTML = element.name;
+    document.getElementById("pjw-web-" + id).href = element.web;
+    document.getElementById("pjw-git-" + id).href = element.git;
+    document.getElementById("pjw-img-" + id).src = element.img;
+    
+    return newPj;
+}
 
+function createProjectGame(node, element, insertAfterNode = null)
+{
+    var newPj = node.cloneNode(true);
+    var id = element.id;
+    
+    newPj.querySelector("#pjg-name-0").setAttribute("id", "pjg-name-" + id);
+    newPj.querySelector("#pjg-web-0").setAttribute("id", "pjg-web-" + id);
+    newPj.querySelector("#pjg-img-0").setAttribute("id", "pjg-img-" + id);
+    newPj.querySelector("#pjg-link-container-0").setAttribute("id", "pjg-link-container-" + id);
+    
+    insertAfter(newPj, insertAfterNode == null ? node : insertAfterNode);
+    
+    document.getElementById("pjg-name-" + id).innerHTML = element.name;
+    document.getElementById("pjg-web-" + id).href = element.web;
+    document.getElementById("pjg-img-" + id).src = element.img;
+    
+    
+    
+    if (element.yt != "")
+    {
+        document.getElementById("pjg-link-container-" + id).innerHTML =
+        '<a href="' + element.yt + '" id="pjg-yt-' + id + '"><img class="project-link-img" src="img/icon/icon-youtube.png" alt=""></a>';
+    }
+    
+    if (element.git != "")
+    {
+        document.getElementById("pjg-link-container-" + id).innerHTML +=
+        '<a href="' + element.git + '" id="pjg-git-' + id + '"><img class="project-link-img" src="img/icon/icon-github.png" alt=""></a>';
+    }
+    
     return newPj;
 }
 
@@ -190,16 +230,16 @@ function GetData()
 {
     fetch(apiUrl)
     .then(data => data.json())
-    .then(data => {
+    .then(data =>{
         var lastNode = null;
+        data.ProjectsWeb.forEach(element => { lastNode = createProjectWeb(document.querySelector('.project-web'), element, lastNode);});  
+        document.querySelector('.project-web').remove(); // remove the base since it became useless
+        
+        lastNode = null;
+        data.ProjectsGame.forEach(element => { lastNode = createProjectGame(document.querySelector('.project-game'), element, lastNode);});  
+        document.querySelector('.project-game').remove(); // remove the base since it became useless
+    })
+    
+}
 
-        data.ProjectsWeb.forEach(element =>
-            {
-                lastNode = createProject(document.querySelector('.project-web'), element.id, element.name, element.gitlink, lastNode);
-            });  
-            document.querySelector('.project-web').remove(); // remove the base since it became useless
-        })
-    }
-    
-    GetData();
-    
+GetData();
