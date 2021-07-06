@@ -1,19 +1,19 @@
 {
-    "web-1": {
+    "web1": {
         "id":1,
         "name":"Reservia",
         "web-link":"https://nathanginisty.github.io/NathanGinisty_2_14122020/",
         "git-link":"https://github.com/NathanGinisty/NathanGinisty_2_14122020"
     },
     
-    "web-2":  {
+    "web2":  {
         "id":2,
         "name":"Ohmyfood",
         "web-link":"https://nathanginisty.github.io/NathanGinisty_3_16022020/",
         "git-link":"https://github.com/NathanGinisty/NathanGinisty_3_16022020"
     },
 
-    "web-3":  {
+    "web3":  {
         "id":3,
         "name":"La Chouette Agence",
         "web-link":"https://nathanginisty.github.io/La-Chouette-Agence/",

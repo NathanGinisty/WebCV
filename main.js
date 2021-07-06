@@ -109,7 +109,6 @@ function loop() {
 }
 
 const canvasBody = document.getElementById("canvas"),
-
 style = window.getComputedStyle(canvasBody),
 height = style.getPropertyValue("height");
 
@@ -123,23 +122,23 @@ setup();
 
 function AddParticleOnClick(mouseEvent)
 {
-  var xpos;
-  var ypos;
-  if (mouseEvent)
-  {
-    //FireFox
-    xpos = mouseEvent.screenX;
-    ypos = mouseEvent.screenY;
-  }
-  else
-  {
-    //IE
-    xpos = window.event.screenX;
-    ypos = window.event.screenY;
-  }
-
-  opts.particleAmount++;
-  particles.push(new Particle(xpos,ypos));
+    var xpos;
+    var ypos;
+    if (mouseEvent)
+    {
+        //FireFox
+        xpos = mouseEvent.screenX;
+        ypos = mouseEvent.screenY;
+    }
+    else
+    {
+        //IE
+        xpos = window.event.screenX;
+        ypos = window.event.screenY;
+    }
+    
+    opts.particleAmount++;
+    particles.push(new Particle(xpos,ypos));
 }
 
 // document.getElementById("canvas").addEventListener("click", AddParticleOnClick);
@@ -149,18 +148,44 @@ function AddParticleOnClick(mouseEvent)
 /* ------------------------- Projects ------------------------- */
 /* ------------------------------------------------------------ */
 
-function multiplyNode(node, count, deep) {
+function multiplyNode(node, count, deep)
+{
     for (var i = 0, copy; i < count - 1; i++) {
         copy = node.cloneNode(deep);
         node.parentNode.insertBefore(copy, node);
-        
     }
 }
 
-multiplyNode(document.querySelector('.project-web'), 3, true);
+// multiplyNode(document.querySelector('.project-web'), 3, true);
+// multiplyNode(document.querySelector('.project-game'), 6, true);
 
-multiplyNode(document.querySelector('.project-game'), 6, true);
+
+function createProject(node)
+{
+    var newPj = node.cloneNode(true);
+    node.parentNode.insertBefore(newPj, node);
+}
+
+createProject(document.querySelector('.project-web'));
 
 
 /* ----------------------------------------------------------- */
 
+const apiData = {
+    url: 'http://localhost:3000/',
+    table: 'getUsers/',
+    id: ''
+}
+
+const {url, table, id} = apiData
+const apiUrl = `${url}${table}${id}`
+
+fetch(apiUrl)
+.then((data)=> console.log(data.json()))
+
+function GetData()
+{
+
+}
+
+GetData();

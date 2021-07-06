@@ -248,14 +248,12 @@ section {
 }
 
 .line-zoom:hover {
-    transform: scale(1.05);
-    margin-left: 50px;
+    transform: scale(1.1);
     transition-duration: 0.25s;
 }
 
 .line-zoom:not(hover) {
     transform: scale(1.00);
-    margin-left: 0px;
     transition-duration: 0.25s;
 }
 
