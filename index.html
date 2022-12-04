@@ -14,45 +14,57 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="w3-top">
-        <div class="w3-bar w3-indigo" style="max-height:100%">
-            <!-- Icon -->
-            <img src="img/ng-icon.webp" class="w3-padding w3-display-left" style="height:100%;" alt="Nathan Ginisty">
-
-            <div class="w3-right">
-
-                <!-- PC/Tablet -->
-                <a href="#home" class="w3-bar-item w3-button w3-padding-16 w3-hide-small">ACCUEIL</a>
-                <div class="w3-dropdown-hover">
-                    <button class="w3-padding-16 w3-button w3-hide-small">PROJETS</button>
-                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
-                        <a href="#web" class="w3-bar-item w3-button">SITE WEB</a>
-                        <a href="#jv" class="w3-bar-item w3-button">JEUVIDEO</a>
-                    </div>
-                </div>
-                <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-small">SERVICES</a>
-                <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-small">CONTACTS</a>
-
-                <!-- Mobile -->
-                <div class="w3-dropdown-hover w3-hide-medium w3-hide-large">
-                    <button class="w3-padding-16 w3-button">O</button>
-                    <div class="w3-dropdown-content w3-bar-block w3-card-4" style="right:0">
-                        <a href="#home" class="w3-bar-item w3-button">ACCUEIL</a>
-                        <a href="#" class="w3-bar-item w3-button">PROJETS</a>
-                        <a href="#" class="w3-bar-item w3-button">SERVICES</a>
-                        <a href="#" class="w3-bar-item w3-button">CONTACTS</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </nav>
 
     <header>
+        <!-- Contact Bar -->
+        <div class="w3-display-container w3-hide-small">
+            <div class="w3-bar w3-indigo">
+                <div class="w3-bar-item w3-padding-16 w3-left">
+                    <div class="fa fa-phone"> +33 (0)6 72 54 08 78</div>
+                    <div class="fa fa-envelope" style="padding-left:10px"> nginisty.pro@gmail.com</div>
+                </div>
+                <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-right">Demander un devis gratuit</a>
+            </div>
+        </div>
+        <!-- Navbar -->
+        <nav class="w3-display-container" style="z-index: 10;">
+            <div class="w3-bar w3-white" style="height:90px;">
+                <!-- Icon -->
+                <a href="#home">
+                    <img src="img/ng-icon.webp" class="w3-padding w3-display-left"
+                        style="height:100%; filter: brightness(0%)" alt="Nathan Ginisty">
+                </a>
+                <div class="w3-display-right">
+                    <!-- PC/Tablet only -->
+                    <a href="#home" class="w3-bar-item w3-button w3-padding-16 w3-hide-small">ACCUEIL</a>
+                    <div class="w3-dropdown-hover">
+                        <button class="w3-padding-16 w3-button w3-hide-small">PROJETS</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                            <a href="#web" class="w3-bar-item w3-button">SITE WEB</a>
+                            <a href="#jv" class="w3-bar-item w3-button">JEUVIDEO</a>
+                        </div>
+                    </div>
+                    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-small">SERVICES</a>
+                    <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-small">CONTACTS</a>
+                    <!-- Mobile only -->
+                    <div class="w3-top w3-dropdown-hover w3-hide-medium w3-hide-large">
+                        <button class="w3-padding-16 w3-button">O</button>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4" style="right:0">
+                            <a href="#home" class="w3-bar-item w3-button">ACCUEIL</a>
+                            <a href="#" class="w3-bar-item w3-button">PROJETS</a>
+                            <a href="#" class="w3-bar-item w3-button">SERVICES</a>
+                            <a href="#" class="w3-bar-item w3-button">CONTACTS</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
         <!-- A AJOUTER: passement d'image de site en arrière plan-->
-        <section class="w3-display-container"
-            style="background: url('img/background/background_code.png') no-repeat center center fixed; background-size: cover;">
+        <section class="w3-display-container" style="background: url('img/background/background_code.png') no-repeat center center fixed; background-size: cover;">           
             <div style="height:600px">
                 <p class="w3-display-middle w3-text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Integer pellentesque lorem eu nisi aliquet, vitae mattis felis gravida. Nam nibh libero, eleifend
@@ -64,22 +76,14 @@
                     ultrices.</p>
             </div>
         </section>
-    </header>
 
-    <main>
-        <section class="w3-display-container">
-            <div style="height:600px">
-                <p class="w3-display-middle w3-text-black">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Integer pellentesque lorem eu nisi aliquet, vitae mattis felis gravida. Nam nibh libero, eleifend
-                    non libero cursus, posuere finibus augue. Curabitur pellentesque consectetur ipsum, in iaculis
-                    ligula bibendum at. Proin rutrum metus eget tellus blandit tempus. Nullam vitae consequat mauris.
-                    Quisque orci odio, feugiat sit amet bibendum interdum, egestas vel ligula. Sed rhoncus ipsum maximus
-                    ante congue, at ullamcorper lacus pulvinar. Curabitur finibus odio ac elit congue malesuada. Duis
-                    tincidunt enim egestas blandit maximus. Vestibulum mollis nunc non elit porttitor, ac facilisis urna
-                    ultrices.</p>
-            </div>
+        <section class="w3-display-container" style="height:600px">
+            <h1 class="w3-display-middle w3-text-black">Création de site internet, site vitrine, site e-commerce et sur-mesure
+            </h1>
+            <h2 class="w3-display-middle w3-text-black">Développeur Web Freelance à Nimes</h2>
         </section>
 
+        <!--filter: blur(5px);-->
         <section class="w3-display-container"
             style="background: url('img/background/background_pokoro.png') no-repeat center center fixed; background-size: cover;">
             <div style="height:600px">
