@@ -8,11 +8,12 @@ let resizeReset = function () {
     // h = canvasBody.height = parseInt(height);
 };
 
+
 opts = {
     particleColor: "rgb(200,200,200)",
     lineColor: "rgb(200,200,200)",
-    particleAmount: 30,
-    defaultSpeed: 0.6,
+    particleAmount: 10,
+    defaultSpeed: 0.5,
     variantSpeed: 1,
     defaultRadius: 2,
     variantRadius: 2,
@@ -142,7 +143,7 @@ function AddParticleOnClick(mouseEvent)
     particles.push(new Particle(xpos,ypos));
 }
 
-// document.getElementById("canvas").addEventListener("click", AddParticleOnClick);
+document.getElementById("canvas").addEventListener("click", AddParticleOnClick);
 
 
 /* ------------------------------------------------------------ */
